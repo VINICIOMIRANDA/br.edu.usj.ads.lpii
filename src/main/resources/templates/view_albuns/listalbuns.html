@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Vinicio Miranda Covalski">
+    <meta name="description" content="Projeto Produto Musicas">
+    <title>StoreMúsicas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="/">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Inicio</font>
+                </font>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Alternar de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Cadastro</font>
+                            </font>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="clientes">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Clientes</font>
+                                </font>
+                            </a>
+                            <a class="dropdown-item" href="albuns">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Albuns</font>
+                                </font>
+                            </a>
+                            <a class="dropdown-item" href="musicas">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Músicas</font>
+                                </font>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Relatórios</font>
+                            </font>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="visualizar_clientes">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Clientes</font>
+                                </font>
+                            </a>
+                            <a class="dropdown-item" href="visualizar_albuns">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Albuns</font>
+                                </font>
+                            </a>
+                            <a class="dropdown-item" href="visualizar_musicas">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Músicas</font>
+                                </font>
+                            </a>
+                        </div>
+                    </li>
+
+
+
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="pesquisa">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Pesquisa</font>
+                            </font>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="contatos">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Contatos</font>
+                            </font>
+                        </a>
+                    </li>
+
+
+
+                </ul>
+
+            </div>
+        </nav>
+
+
+
+        <div class="my-5 p-3">
+            <div class="py-3">
+                <h4 class="mb-3">Listagem de Albuns</h4>
+                <div class="py-3">
+                    <a th:href="cadastro_albuns" class="btn btn-outline-info">Novo</a>
+                    <div class="py-3">
+
+                        <div class="table table-responsive-sm">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Genero</th>
+                                        <th scope="col">Ano de Lançamento</th>
+                                        <th scope="col">Duração</th>
+                                        <th scope="col">Ações</th>
+                                    </tr>
+                                </thead>
+
+
+                                <tr th:each="item : ${historico}">
+                                    <td th:text="${item.id}"></td>
+                                    <td><a th:href="@{/editar_albuns/{id}(id=${item.id})}" th:text="${item.nome}"></a>
+                                    </td>
+                                    <td th:text="${item.genero}"></td>
+                                    <td th:text="${item.ano}"></td>
+                                    <td th:text="${item.duracao}"></td>
+
+
+                                    <td><a th:href="@{/deletar_albuns/{id}(id=${item.id})}"
+                                            class="btn btn-outline-danger">Apagar</a>
+                                    <td><a th:href="@{/editar_albuns/{id}(id=${item.id})}"
+                                            class="btn btn-outline-success">Editar</a>
+                                    </td>
+
+                                </tr>
+                            </table>
+
+                        </div>
+
+
+                    </div>
+
+                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                        crossorigin="anonymous"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                        crossorigin="anonymous"></script>
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                        crossorigin="anonymous"></script>
+</body>
+
+</html>
