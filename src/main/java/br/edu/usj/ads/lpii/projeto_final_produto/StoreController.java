@@ -186,6 +186,35 @@ public class StoreController {
         return modelAndView;
     }
 
+
+    @GetMapping(value = "/visualizar_clientes_detalhes/clientes")
+    public String getRetornoClientesClientes() {
+        // templates/index
+            return "redirect:/clientes";
+    }
+
+    
+    @GetMapping(value = "/visualizar_clientes_detalhes/albuns")
+    public String getRetornoClientesAlbuns() {
+        // templates/index
+            return "redirect:/albuns";
+    }
+
+    
+    @GetMapping(value = "/visualizar_clientes_detalhes/musicas")
+    public String getRetornoClientesMusicas() {
+        // templates/index
+           return "redirect:/musicas";
+    }
+
+    @GetMapping(value = "/visualizar_clientes_detalhes/contatos")
+    public String getRetornoClientesContatos() {
+        // templates/index
+           return "redirect:/contatos";
+    }
+
+
+
     @GetMapping(value = "/visualizar_album_detalhes/{id}")
     public ModelAndView getAlbDetalhes(@PathVariable Long id) {
 
@@ -196,6 +225,34 @@ public class StoreController {
 
         return modelAndView;
     }
+
+    @GetMapping(value = "/visualizar_album_detalhes/clientes")
+    public String getRetornoAlbunsClientes() {
+        // templates/index
+            return "redirect:/clientes";
+    }
+
+    
+    @GetMapping(value = "/visualizar_album_detalhes/albuns")
+    public String getRetornoAlbunsAlbuns() {
+        // templates/index
+            return "redirect:/albuns";
+    }
+
+    
+    @GetMapping(value = "/visualizar_album_detalhes/musicas")
+    public String getRetornoAlbunsMusicas() {
+        // templates/index
+           return "redirect:/musicas";
+    }
+
+    @GetMapping(value = "/visualizar_album_detalhes/contatos")
+    public String getRetornoAlbunsContatos() {
+        // templates/index
+           return "redirect:/contatos";
+    }
+
+    
 
     @GetMapping(value = "/visualizar_musicas_detalhes/{id}")
     public ModelAndView getMusicaDetalhetes(@PathVariable Long id) {
@@ -208,31 +265,59 @@ public class StoreController {
         return modelAndView;
     }
 
+
+    
+    @GetMapping(value = "/visualizar_musicas_detalhes/clientes")
+    public String getRetornoMusicasClientes() {
+        // templates/index
+            return "redirect:/clientes";
+    }
+
+    
+    @GetMapping(value = "/visualizar_musicas_detalhes/albuns")
+    public String getRetornoMusicasAlbuns() {
+        // templates/index
+            return "redirect:/albuns";
+    }
+
+    
+    @GetMapping(value = "/visualizar_musicas_detalhes/musicas")
+    public String getRetornoMusicasMusicas() {
+        // templates/index
+           return "redirect:/musicas";
+    }
+
+    @GetMapping(value = "/visualizar_musicas_detalhes/contatos")
+    public String getRetornoMusicasContatos() {
+        // templates/index
+           return "redirect:/contatos";
+    }
+
     @GetMapping(value = "/editar_clientes/{id}")
-    public ModelAndView getEditarClientes(@PathVariable Long id) {
+    public String getEditarClientes(@PathVariable Long id) {
         // retornar o formulario com a clientes ID preenchida no form
         Clientes clientes = clientesRepository.findById(id).get();
         ModelAndView modelAndView = new ModelAndView("view_clientes/cadclientes");
         modelAndView.addObject("clientes", clientes);
-        return modelAndView;
+         return "redirect:/cadastro_clientes";
     }
 
     @GetMapping(value = "/editar_albuns/{id}")
-    public ModelAndView getEditarAlbuns(@PathVariable Long id) {
+    public String  getEditarAlbuns(@PathVariable Long id) {
         Album album = albumRepository.findById(id).get();
         ModelAndView modelAndView = new ModelAndView("view_albuns/cadalbum");
         modelAndView.addObject("album", album);
-        return modelAndView;
+        return "redirect:/cadastro_albuns";
     }
 
     @GetMapping(value = "/editar_musicas/{id}")
-    public ModelAndView getEditarMusicas(@PathVariable Long id) {
+    public String getEditarMusicas(@PathVariable Long id) {
         Musica musica = musicaRepository.findById(id).get();
         ModelAndView modelAndView = new ModelAndView("view_musicas/cadmusicas");
         modelAndView.addObject("musica", musica);
         modelAndView.addObject("lista_albuns", albumRepository.findAll());
 
-        return modelAndView;
+        return "redirect:/cadastro_musicas";
     }
 
     @GetMapping(value = "/deletar_clientes/{id}")
@@ -270,7 +355,7 @@ public class StoreController {
     ///////////// RequestMethod.POST)./////
 
     @PostMapping(value = "/cadastro_clientes")
-    public ModelAndView postCadClientes(Clientes clientes) {
+     public String postCadClientes(Clientes clientes) {
 
         System.out.println("Passei por aqui");
 
@@ -282,12 +367,12 @@ public class StoreController {
         modelAndView.addObject("mensagem", " Cadastrado com Sucesso");
         modelAndView.addObject("historico", clientesRepository.findAll());
 
-        return modelAndView;
+        return "redirect:/clientes";
 
     };
 
     @PostMapping(value = "/cadastro_albuns")
-    public ModelAndView postCadAlbum(Album album) {
+    public String postCadAlbum(Album album) {
 
         System.out.println("Passei por aqui Album");
 
@@ -300,11 +385,11 @@ public class StoreController {
         modelAndView.addObject("mensagem", " Cadastrado com Sucesso");
         modelAndView.addObject("historico", albumRepository.findAll());
 
-        return modelAndView;
+        return "redirect:/albuns";
     }
 
     @PostMapping(value = "/cadastro_musicas")
-    public ModelAndView postCadMusica(Musica musica) {
+    public String postCadMusica(Musica musica) {
 
         System.out.println("Passei por aqui Produtos");
 
@@ -317,7 +402,7 @@ public class StoreController {
         modelAndView.addObject("historico", musicaRepository.findAll());
         modelAndView.addObject("lista_albuns", albumRepository.findAll());
         System.out.println(albumRepository.findAll());
-        return modelAndView;
+        return "redirect:/musicas";
     }
 
 }
