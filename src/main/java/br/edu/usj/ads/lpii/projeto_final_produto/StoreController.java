@@ -157,20 +157,18 @@ public class StoreController {
 
     }
 
-   
-
     @GetMapping(value = "/pesquisar/{nome}")
     public List<Clientes> getPesquisarNome(@PathVariable String nome) {
         List<Clientes> lista = clientesRepository.findByNomeContainingIgnoreCase(nome);
         return lista;
 
-    }
+    } 
 
     @GetMapping(value = "/contatos")
     public ModelAndView getContatos() {
 
         ModelAndView modelAndView = new ModelAndView("view_main/contatos"); // Criando um construtor chamando o
-                                                                           // templates/index
+                                                                            // templates/index
         return modelAndView;
 
     }
@@ -186,34 +184,47 @@ public class StoreController {
         return modelAndView;
     }
 
-
     @GetMapping(value = "/visualizar_clientes_detalhes/clientes")
     public String getRetornoClientesClientes() {
         // templates/index
-            return "redirect:/clientes";
+        return "redirect:/clientes";
     }
 
-    
     @GetMapping(value = "/visualizar_clientes_detalhes/albuns")
     public String getRetornoClientesAlbuns() {
         // templates/index
-            return "redirect:/albuns";
+        return "redirect:/albuns";
     }
 
-    
     @GetMapping(value = "/visualizar_clientes_detalhes/musicas")
     public String getRetornoClientesMusicas() {
-        // templates/index
-           return "redirect:/musicas";
+        return "redirect:/musicas";
     }
 
     @GetMapping(value = "/visualizar_clientes_detalhes/contatos")
     public String getRetornoClientesContatos() {
-        // templates/index
-           return "redirect:/contatos";
+        return "redirect:/contatos";
     }
 
+    @GetMapping(value = "/visualizar_clientes_detalhes/pesquisa")
+    public String getRetornoClientesPesquisa() {
+        return "redirect:/pesquisa";
+    }
 
+    @GetMapping(value = "/visualizar_clientes_detalhes/visualizar_clientes")
+    public String getRetornoClientesVisualizarClientes() {
+        return "redirect:/visualizar_clientes";
+    }
+
+    @GetMapping(value = "/visualizar_clientes_detalhes/visualizar_albuns")
+    public String getRetornoClientesVisualizarAlbuns() {
+        return "redirect:/visualizar_albuns";
+    }
+
+    @GetMapping(value = "/visualizar_clientes_detalhes/visualizar_musicas")
+    public String getRetornoClientesVisualizarMusicas() {
+        return "redirect:/visualizar_musicas";
+    }
 
     @GetMapping(value = "/visualizar_album_detalhes/{id}")
     public ModelAndView getAlbDetalhes(@PathVariable Long id) {
@@ -229,30 +240,47 @@ public class StoreController {
     @GetMapping(value = "/visualizar_album_detalhes/clientes")
     public String getRetornoAlbunsClientes() {
         // templates/index
-            return "redirect:/clientes";
+        return "redirect:/clientes";
     }
 
-    
     @GetMapping(value = "/visualizar_album_detalhes/albuns")
     public String getRetornoAlbunsAlbuns() {
         // templates/index
-            return "redirect:/albuns";
+        return "redirect:/albuns";
     }
 
-    
     @GetMapping(value = "/visualizar_album_detalhes/musicas")
     public String getRetornoAlbunsMusicas() {
         // templates/index
-           return "redirect:/musicas";
+        return "redirect:/musicas";
     }
 
     @GetMapping(value = "/visualizar_album_detalhes/contatos")
     public String getRetornoAlbunsContatos() {
         // templates/index
-           return "redirect:/contatos";
+        return "redirect:/contatos";
     }
 
-    
+    @GetMapping(value = "/visualizar_album_detalhes/pesquisa")
+    public String getRetornoAlbunsPesquisa() {
+        // templates/index
+        return "redirect:/pesquisa";
+    }
+
+    @GetMapping(value = "/visualizar_album_detalhes/visualizar_clientes")
+    public String getRetDetalhesVisualizarClientes() {
+        return "redirect:/visualizar_clientes";
+    }
+
+    @GetMapping(value = "/visualizar_album_detalhes/visualizar_albuns")
+    public String getRetDetalhesVisualizaralbuns() {
+        return "redirect:/visualizar_albuns";
+    }
+
+    @GetMapping(value = "/visualizar_album_detalhes/visualizar_musicas")
+    public String getRetDetalhesVisualizarMusicas() {
+        return "redirect:/visualizar_musicas";
+    }
 
     @GetMapping(value = "/visualizar_musicas_detalhes/{id}")
     public ModelAndView getMusicaDetalhetes(@PathVariable Long id) {
@@ -265,59 +293,196 @@ public class StoreController {
         return modelAndView;
     }
 
-
-    
     @GetMapping(value = "/visualizar_musicas_detalhes/clientes")
     public String getRetornoMusicasClientes() {
         // templates/index
-            return "redirect:/clientes";
+        return "redirect:/clientes";
     }
 
-    
     @GetMapping(value = "/visualizar_musicas_detalhes/albuns")
     public String getRetornoMusicasAlbuns() {
         // templates/index
-            return "redirect:/albuns";
+        return "redirect:/albuns";
     }
 
-    
     @GetMapping(value = "/visualizar_musicas_detalhes/musicas")
     public String getRetornoMusicasMusicas() {
         // templates/index
-           return "redirect:/musicas";
+        return "redirect:/musicas";
     }
 
     @GetMapping(value = "/visualizar_musicas_detalhes/contatos")
     public String getRetornoMusicasContatos() {
         // templates/index
-           return "redirect:/contatos";
+        return "redirect:/contatos";
+    }
+
+    @GetMapping(value = "/visualizar_musicas_detalhes/pesquisa")
+    public String getRetornoMusicasPesquisa() {
+        // templates/index
+        return "redirect:/pesquisa";
+    }
+
+    @GetMapping(value = "/visualizar_musicas_detalhes/visualizar_clientes")
+    public String getRetDetMusicasVisualizarClientes() {
+        return "redirect:/visualizar_clientes";
+    }
+
+    @GetMapping(value = "/visualizar_musicas_detalhes/visualizar_albuns")
+    public String getRetDetMusicasVisualizarAlbuns() {
+        return "redirect:/visualizar_albuns";
+    }
+
+    @GetMapping(value = "/visualizar_musicas_detalhes/visualizar_musicas")
+    public String getRetDetMusicasVisualizarMusicas() {
+        return "redirect:/visualizar_musicas";
     }
 
     @GetMapping(value = "/editar_clientes/{id}")
-    public String getEditarClientes(@PathVariable Long id) {
+    public ModelAndView getEditarClientes(@PathVariable Long id) {
         // retornar o formulario com a clientes ID preenchida no form
         Clientes clientes = clientesRepository.findById(id).get();
         ModelAndView modelAndView = new ModelAndView("view_clientes/cadclientes");
         modelAndView.addObject("clientes", clientes);
-         return "redirect:/cadastro_clientes";
+        return modelAndView;
     }
 
     @GetMapping(value = "/editar_albuns/{id}")
-    public String  getEditarAlbuns(@PathVariable Long id) {
+    public ModelAndView getEditarAlbuns(@PathVariable Long id) {
         Album album = albumRepository.findById(id).get();
         ModelAndView modelAndView = new ModelAndView("view_albuns/cadalbum");
         modelAndView.addObject("album", album);
-        return "redirect:/cadastro_albuns";
+        return modelAndView;
     }
 
     @GetMapping(value = "/editar_musicas/{id}")
-    public String getEditarMusicas(@PathVariable Long id) {
+    public ModelAndView getEditarMusicas(@PathVariable Long id) {
         Musica musica = musicaRepository.findById(id).get();
         ModelAndView modelAndView = new ModelAndView("view_musicas/cadmusicas");
         modelAndView.addObject("musica", musica);
         modelAndView.addObject("lista_albuns", albumRepository.findAll());
 
-        return "redirect:/cadastro_musicas";
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/editar_clientes/clientes")
+    public String getRetornoEditClienteClientes() {
+        return "redirect:/clientes";
+    }
+
+    @GetMapping(value = "/editar_clientes/albuns")
+    public String getRetornoEditClienteAlbuns() {
+        return "redirect:/albuns";
+    }
+
+    @GetMapping(value = "/editar_clientes/musicas")
+    public String getRetornoEditClienteMusicas() {
+        return "redirect:/musicas";
+    }
+
+    @GetMapping(value = "/editar_clientes/contatos")
+    public String getRetornoEditClienteContatos() {
+        return "redirect:/contatos";
+    }
+
+    @GetMapping(value = "/editar_clientes/pesquisa")
+    public String getRetornoEditClientePesquisa() {
+        return "redirect:/pesquisa";
+    }
+
+    @GetMapping(value = "/editar_clientes/visualizar_clientes")
+    public String getRetornoEditClienteVisualizarClientes() {
+        return "redirect:/visualizar_clientes";
+    }
+
+    @GetMapping(value = "/editar_clientes/visualizar_albuns")
+    public String getRetornoEditClienteVisualizarAlbuns() {
+        return "redirect:/visualizar_albuns";
+    }
+
+    @GetMapping(value = "/editar_clientes/visualizar_musicas")
+    public String getRetornoEditClienteVisualizarMusicas() {
+        return "redirect:/visualizar_musicas";
+    }
+
+    @GetMapping(value = "/editar_musicas/clientes")
+    public String getRetornoEditMusicasClientes() {
+        return "redirect:/clientes";
+    }
+
+    @GetMapping(value = "/editar_musicas/albuns")
+    public String getRetornoEditMusicasAlbuns() {
+        return "redirect:/albuns";
+    }
+
+    @GetMapping(value = "/editar_musicas/musicas")
+    public String getRetornoEditMusicasMusicas() {
+        return "redirect:/musicas";
+    }
+
+    @GetMapping(value = "/editar_musicas/contatos")
+    public String getRetornoEditMusicasContatos() {
+        return "redirect:/contatos";
+    }
+
+    @GetMapping(value = "/editar_musicas/pesquisa")
+    public String getRetornoEditMusicasPesquisa() {
+        return "redirect:/pesquisa";
+    }
+
+    @GetMapping(value = "/editar_musicas/visualizar_clientes")
+    public String getRetornoEditMusicasVisualizarClientes() {
+        return "redirect:/visualizar_clientes";
+    }
+
+    @GetMapping(value = "/editar_musicas/visualizar_albuns")
+    public String getRetornoEditMusicasVisualizarAlbuns() {
+        return "redirect:/visualizar_albuns";
+    }
+
+    @GetMapping(value = "/editar_musicas/visualizar_musicas")
+    public String getRetornoEditMusicasVisualizarMusicas() {
+        return "redirect:/visualizar_musicas";
+    }
+
+    @GetMapping(value = "/editar_albuns/clientes")
+    public String getRetornoEditAlbunsClientes() {
+        return "redirect:/clientes";
+    }
+
+    @GetMapping(value = "/editar_albuns/albuns")
+    public String getRetornoEditAlbunsAlbuns() {
+        return "redirect:/albuns";
+    }
+
+    @GetMapping(value = "/editar_albuns/musicas")
+    public String getRetornoEditAlbunsMusicas() {
+        return "redirect:/musicas";
+    }
+
+    @GetMapping(value = "/editar_albuns/contatos")
+    public String getRetornoEditAlbunsContatos() {
+        return "redirect:/contatos";
+    }
+
+    @GetMapping(value = "/editar_albuns/pesquisa")
+    public String getRetornoEditAlbunsPesquisa() {
+        return "redirect:/pesquisa";
+    }
+
+    @GetMapping(value = "/editar_albuns/visualizar_clientes")
+    public String getRetornoEditAlbunsVisualizarClientes() {
+        return "redirect:/visualizar_clientes";
+    }
+
+    @GetMapping(value = "/editar_albuns/visualizar_albuns")
+    public String getRetornoEditAlbunsVisualizarAlbuns() {
+        return "redirect:/visualizar_albuns";
+    }
+
+    @GetMapping(value = "/editar_albuns/visualizar_musicas")
+    public String getRetornoEditAlbunsVisualizarMusicas() {
+        return "redirect:/visualizar_musicas";
     }
 
     @GetMapping(value = "/deletar_clientes/{id}")
@@ -355,7 +520,7 @@ public class StoreController {
     ///////////// RequestMethod.POST)./////
 
     @PostMapping(value = "/cadastro_clientes")
-     public String postCadClientes(Clientes clientes) {
+    public String postCadClientes(Clientes clientes) {
 
         System.out.println("Passei por aqui");
 
