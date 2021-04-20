@@ -135,8 +135,8 @@
 
                                     <div class="col-md-6 ml-2 pl-2">
                                         <label for="ano">Ano do Lançamento</label>
-                                        <input type="number" name="ano" class="form-control" id="ano"
-                                            placeholder="1999" th:value="${album.ano}" />
+                                        <input type="datetime" name="ano" class="form-control" id="ano"
+                                            placeholder="1999" th:value="${album.ano}" required minlength="4"/>
 
                                     </div>
 
@@ -154,7 +154,7 @@
                                         <hr class="col-md-12 ml-2">
                                         <div class="row m-1">
                                             <input type="hidden" name="id" th:value="${album.id}" />
-                                            <input type="submit" class="btn btn-outline-primary" value="Cadastrar" /> </div>
+                                            <input type="submit" class="btn btn-outline-primary" value="Salvar" /> </div>
     
                                     </div>
     
@@ -163,7 +163,7 @@
                             </form>
 
                             <div class="row m-1">
-                                <a href="/albuns" class="btn btn-outline-dark">Voltar</a>
+                                <a href="/albuns" class="btn btn-outline-dark">Cancelar</a>
                             </div>
                   
                         </div>

@@ -136,7 +136,7 @@
                         <div class="col-md-6 ml-2 pl-2">
 
 
-                            <select id="album" th:field="${musica.album}">
+                            <select id="album" th:field="${musica.album}" required>
                                 <option value="">Selecione o Album</option>
                                 <option th:each="a : ${lista_albuns}" name="album" th:value="${a.nome}"
                                     th:text="${a.nome}"></option>
@@ -186,7 +186,7 @@
                             <hr class="col-md-12 ml-2">
                             <div class="row m-1">
                                 <input type="hidden" name="id" th:value="${musica.id}" />
-                                <input type="submit" class="btn btn-outline-primary" value="Cadastrar" /> </div>
+                                <input type="submit" class="btn btn-outline-primary" value="Salvar" /> </div>
 
                         </div>
 
@@ -196,7 +196,7 @@
 
 
                 <div class="row m-1">
-                    <a href="/musicas" class="btn btn-outline-dark">Voltar</a>
+                    <a href="/musicas" class="btn btn-outline-dark">Cancelar</a>
                 </div>
 
             </div>

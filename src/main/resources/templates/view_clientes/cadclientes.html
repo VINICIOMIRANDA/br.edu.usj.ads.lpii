@@ -126,7 +126,7 @@
                         <div class="col-md-6 ml-2 pl-2">
                             <label for="idade">Idade</label>
                             <input type="text" name="idade" class="form-control" id="idade" placeholder="Idade"
-                                th:value="${clientes.idade}" />
+                                th:value="${clientes.idade}" required />
 
                         </div>
            
@@ -147,7 +147,7 @@
                         <div class="col-md-6 ml-2 pl-2">
                             <label for="senha">Senha <span class="text-muted">(8 digitos)</span></label>
                             <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha"
-                                th:value="${clientes.senha}" />
+                                th:value="${clientes.senha}" minlength="8" required />
                         </div>
        
                         <div class="col-md-6 ml-2 pl-2">
@@ -160,7 +160,7 @@
                             <div class="row m-1">
                                 <input type="hidden" name="id" th:value="${clientes.id}" />
 
-                                <input type="submit" class="btn btn-outline-primary" value="Cadastrar" /> </div>
+                                <input type="submit" class="btn btn-outline-primary" value="Salvar" /> </div>
 
 
 
@@ -169,7 +169,7 @@
 
                 </form>
                 <div class="row m-1">
-                    <a href="/clientes" class="btn btn-outline-dark">Voltar</a>
+                    <a href="/clientes" class="btn btn-outline-dark">Cancelar</a>
                 </div>
             </div>
         </div>
